@@ -2,11 +2,8 @@ package com.gopivotal.cf.workshop.web;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.gopivotal.cf.workshop.entity.Attendee;
 import com.gopivotal.cf.workshop.entity.Session;
@@ -64,9 +60,9 @@ public class CloudFoundryWorkshopController {
 	}
 	
 	/**
-	 * Action to get all attendees in the database.
-	 * @param model The model for this action
-	 * @return The path to the view
+	 * Action to get a list of all attendees.
+	 * @param model The model for this action.
+	 * @return The path to the view.
 	 */
 	@RequestMapping(value = "/attendees", method = RequestMethod.GET)
 	public String attendees(Model model) {
@@ -78,9 +74,10 @@ public class CloudFoundryWorkshopController {
 	}
 	
 	/**
-	 * Action to get all sessions in the database.
-	 * @param model The model for this action
-	 * @return The path to the view
+	 * Action to get a list of all of the sessions for the specified attendee.
+	 * @param attendeeId The ID of the attendee to get the sessions for.
+	 * @param model The model for this action.
+	 * @return The path to the view.
 	 */
 	@RequestMapping(value = "/sessions", method = RequestMethod.GET)
 	public String sessions(@RequestParam("attendeeId") Long attendeeId, Model model) {
@@ -93,8 +90,9 @@ public class CloudFoundryWorkshopController {
 	}
 	
 	/**
-	 * Action to initiate shutdown of the system.  In CF, the application <em>should</em>
-	 * restart.
+	 * Action to initiate shutdown of the system.  In CF, the application 
+	 * <em>should</em>f restart.  In other environments, the application
+	 * runtime will be shut down.
 	 */
 	@RequestMapping(value = "/kill", method = RequestMethod.GET)
 	public void kill() {
@@ -105,11 +103,11 @@ public class CloudFoundryWorkshopController {
 	}
 	
 	/**
-	 * Seeds data in the database for convenience purposes.
-	 * @return The view to display
+	 * Seeds data in the database for convenience / demo purposes.
+	 * @return The view to display.
 	 */
 	@RequestMapping(value = "/seedData", method = RequestMethod.GET)
-	public @ResponseBody String seedData() {
+	public String seedData() {
 		
 		
 		Attendee attendee = new Attendee();
@@ -136,7 +134,7 @@ public class CloudFoundryWorkshopController {
 		session.setAttendee(attendee);
 		sessionRepository.save(session);
 
-		return "<h1>Success!</h1>";
+		return "index";
 	}
 
 
