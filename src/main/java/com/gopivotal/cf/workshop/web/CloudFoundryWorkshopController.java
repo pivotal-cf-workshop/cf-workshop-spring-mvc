@@ -114,14 +114,14 @@ public class CloudFoundryWorkshopController {
 		
 		
 		Attendee attendee = new Attendee();
-		attendee.setFirstName("Brian");
-		attendee.setLastName("Jimerson");
+		attendee.setFirstName("John");
+		attendee.setLastName("Smith");
 		attendee.setAddress("123 Main St.");
 		attendee.setCity("Akron");
 		attendee.setState("OH");
 		attendee.setZipCode("44321");
 		attendee.setPhoneNumber("330-123-4567");
-		attendee.setEmailAddress("bjimerson@gopivotal.com");
+		attendee.setEmailAddress("jsmith@gopivotal.com");
 		attendeeRepository.save(attendee);
 
 		Session session = new Session();
