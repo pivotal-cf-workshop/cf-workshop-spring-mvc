@@ -54,6 +54,9 @@ public class CloudFoundryWorkshopController {
 		String vcapApplication = System.getenv("VCAP_APPLICATION");
 		model.addAttribute("vcapApplication", vcapApplication);
 		
+		String vcapServices = System.getenv("VCAP_SERVICES");
+		model.addAttribute("vcapServices", vcapServices);
+		
 		logger.info("Current date and time = [{}], port = [{}].", serverTime, port);
 
 		return "index";
@@ -134,9 +137,7 @@ public class CloudFoundryWorkshopController {
 		session.setAttendee(attendee);
 		sessionRepository.save(session);
 
-		return "index";
+		return "redirect:attendees";
 	}
-
-
 
 }

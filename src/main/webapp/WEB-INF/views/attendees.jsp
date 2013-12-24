@@ -30,7 +30,7 @@
         <hr/>
       </div>
     </div>
-
+	
     <div class="row">
       <div class="large-12 columns">
         <table>
@@ -63,6 +63,12 @@
         </table>
       </div>
     </div>
+
+	<div class="row">
+		<div class="large-12 columns">
+			<a href="seedData" class="button medium">Seed Sample Data</a>
+		</div>
+	</div>
 
     <script src="resources/js/jquery.js"></script>
     <script src="resources/js/foundation.min.js"></script>

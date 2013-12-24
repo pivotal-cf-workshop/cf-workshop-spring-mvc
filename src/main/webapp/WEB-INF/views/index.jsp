@@ -36,7 +36,8 @@
           <h4>Environment Information</h4><br/>
           <p>The current server time is <em>${serverTime}</em></p>
           <p>The application port is <em>${port}</em></p>
-          <p>The instance ID is <em>${vcapApplication}</em></p>
+          <p>The application variables are <em>${vcapApplication}</em></p>
+          <p>The bound services are <em>${vcapServices}</em></p>
 	    </div>
         <hr/>
       </div>
