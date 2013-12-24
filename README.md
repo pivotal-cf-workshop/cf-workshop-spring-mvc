@@ -1,9 +1,10 @@
+Pivotal CF Workshop - Spring MVC
+================================
+
 This is the Spring MVC sample application for the Pivotal CF Workshop.
+It is intended to demonstrate some of the basic functionality of Pivotal
+CF:
 
-To run this application:
+ * Pivotal CF environment variables
+ * Pivotal CF service variables
 
- * Clone this repository.
- * mvn clean package
- * cf push
- * http://<host>/seedData
- * http://<host>/
