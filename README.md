@@ -56,3 +56,4 @@ Once the application has been deployed locally or to Pivotal CF, sample
 data can be loaded.  On the *Attendees* page, there is a button labeled
 'Seed Sample Data'.  This button will populate an attendee and
 associated sessions in the application.
+
