@@ -24,13 +24,16 @@
 	
 	<jpa:repositories base-package="com.gopivotal.cf.workshop" />
 	
-	<beans profile="cloud">
-		<cloud:data-source id="dataSource"/>
+	<beans>
+		
+		<bean id="dataSource" class="org.h2.jdbcx.JdbcDataSource">
+			<property name="URL" value="jdbc:h2:~/test"/>
+		</bean>
+		
 		
 		<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 			<property name="showSql" value="true"/>
 			<property name="generateDdl" value="true"/>
-			<property name="database" value="MYSQL"/>
 		</bean>
 	
 		<bean id="localContainerEntityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -38,29 +41,6 @@
 			<property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
 			<property name="jpaPropertyMap">
 				<map>
-					<entry key="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
-					<entry key="hibernate.cache.provider_class" value="org.hibernate.cache.HashtableCacheProvider" />
-				</map>
-			</property>
-		</bean>
-		
-	</beans>
-	
-	<beans profile="local">
-		<jdbc:embedded-database id="dataSource" type="H2" />
-		
-		<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-			<property name="showSql" value="true"/>
-			<property name="generateDdl" value="true"/>
-			<property name="database" value="H2"/>
-		</bean>
-	
-		<bean id="localContainerEntityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-			<property name="dataSource" ref="dataSource"/>
-			<property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
-			<property name="jpaPropertyMap">
-				<map>
-					<entry key="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
 					<entry key="hibernate.cache.provider_class" value="org.hibernate.cache.HashtableCacheProvider" />
 				</map>
 			</property>
