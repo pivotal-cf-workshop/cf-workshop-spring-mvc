@@ -49,11 +49,4 @@ If a database service other than MySQL is used, add the JDBC driver to
 the POM file, and update the Hibernate configuration in
 `/src/main/webapp/WEB-INF/root-context.xml`.
 
-Loading Sample Data
--------------------
-
-Once the application has been deployed locally or to Pivotal CF, sample
-data can be loaded.  On the *Attendees* page, there is a button labeled
-'Seed Sample Data'.  This button will populate an attendee and
-associated sessions in the application.
 

@@ -104,40 +104,5 @@ public class CloudFoundryWorkshopController {
 		System.exit(-1);
 		
 	}
-	
-	/**
-	 * Seeds data in the database for convenience / demo purposes.
-	 * @return The view to display.
-	 */
-	@RequestMapping(value = "/seedData", method = RequestMethod.GET)
-	public String seedData() {
-		
-		
-		Attendee attendee = new Attendee();
-		attendee.setFirstName("John");
-		attendee.setLastName("Smith");
-		attendee.setAddress("123 Main St.");
-		attendee.setCity("Akron");
-		attendee.setState("OH");
-		attendee.setZipCode("44321");
-		attendee.setPhoneNumber("330-123-4567");
-		attendee.setEmailAddress("jsmith@gopivotal.com");
-		attendeeRepository.save(attendee);
-
-		Session session = new Session();
-		session.setName("Session 1");
-		session.setDate(new Date());
-		session.setAttendee(attendee);
-		sessionRepository.save(session);
-
-		session = new Session();
-		session.setName("Session 2");
-		session.setDate(new Date());
-		session.setCompleted(true);
-		session.setAttendee(attendee);
-		sessionRepository.save(session);
-
-		return "redirect:attendees";
-	}
 
 }

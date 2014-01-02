@@ -24,31 +24,27 @@
 	
 	<jpa:repositories base-package="com.gopivotal.cf.workshop" />
 	
-	<beans>
-		
-		<bean id="dataSource" class="org.h2.jdbcx.JdbcDataSource">
-			<property name="URL" value="jdbc:h2:~/test"/>
-		</bean>
-		
-		<jdbc:initialize-database data-source="dataSource">
-			<jdbc:script location="classpath:data/sampledata.sql"/>
-		</jdbc:initialize-database>
-		
-		
-		<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-			<property name="showSql" value="true"/>
-			<property name="generateDdl" value="true"/>
-		</bean>
+	<bean id="dataSource" class="org.h2.jdbcx.JdbcDataSource">
+		<property name="URL" value="jdbc:h2:~/test"/>
+	</bean>
 	
-		<bean id="localContainerEntityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-			<property name="dataSource" ref="dataSource"/>
-			<property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
-			<property name="jpaPropertyMap">
-				<map>
-					<entry key="hibernate.cache.provider_class" value="org.hibernate.cache.HashtableCacheProvider" />
-				</map>
-			</property>
-		</bean>
-	</beans>
+	<jdbc:initialize-database data-source="dataSource">
+		<jdbc:script location="classpath:data/sampledata.sql"/>
+	</jdbc:initialize-database>
+	
+	<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="showSql" value="true"/>
+		<property name="generateDdl" value="true"/>
+	</bean>
+
+	<bean id="localContainerEntityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
+		<property name="jpaPropertyMap">
+			<map>
+				<entry key="hibernate.cache.provider_class" value="org.hibernate.cache.HashtableCacheProvider" />
+			</map>
+		</property>
+	</bean>
 	
 </beans>
