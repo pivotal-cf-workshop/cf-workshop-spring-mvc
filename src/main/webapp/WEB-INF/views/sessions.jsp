@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pivotal CF Workshop | My Sessions</title>
+    <title>Pivotal CF Workshop | Sessions</title>
     <link rel="stylesheet" href="resources/css/foundation.css" />
     <script src="resources/js/modernizr.js"></script>
   </head>
@@ -27,7 +27,7 @@
 
     <div class="row">
       <div class="large-12 columns">
-        <h3>My Sessions</h3>
+        <h3>Sessions for '${attendee.firstName} ${attendee.lastName}'</h3>
         <hr/>
       </div>
     </div>

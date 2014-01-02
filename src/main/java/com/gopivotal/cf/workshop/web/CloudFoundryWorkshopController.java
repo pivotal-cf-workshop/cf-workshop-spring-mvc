@@ -100,6 +100,7 @@ public class CloudFoundryWorkshopController {
 		
 		Attendee attendee = attendeeRepository.findOne(attendeeId);
 		List<Session> sessions = sessionRepository.findByAttendee(attendee);
+		model.addAttribute("attendee", attendee);
 		model.addAttribute("sessions", sessions);
 		
 		return "sessions";
