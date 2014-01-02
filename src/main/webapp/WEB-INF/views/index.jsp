@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!doctype html>
 <html class="no-js" lang="en">
   <head>
@@ -36,13 +38,15 @@
           <h4>Environment Information</h4><br/>
           <p>The current server time is <em>${serverTime}</em></p>
           <p>The application port is <em>${port}</em></p>
-          <p>The application variables are <em>${vcapApplication}</em></p>
+          <p>The instance ID is <em>${vcapApplication['instance_id']}</em></p>
+          <p>The instance index is <em>${vcapApplication['instance_index']}</em></p>
+          <p>The instance was started at <em>${vcapApplication['started_at']}</em></p>
           <p>The bound services are <em>${vcapServices}</em></p>
 	    </div>
         <hr/>
       </div>
     </div>
-
+    
     <div class="row">
       <div class="large-12 columns">
         <!-- This simply refreshes the page to demonstrate changed (or unchanged) ports -->

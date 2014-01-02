@@ -28,7 +28,7 @@
 		<property name="URL" value="jdbc:h2:~/test"/>
 	</bean>
 	
-	<jdbc:initialize-database data-source="dataSource">
+	<jdbc:initialize-database data-source="dataSource" ignore-failures="ALL">
 		<jdbc:script location="classpath:data/sampledata.sql"/>
 	</jdbc:initialize-database>
 	

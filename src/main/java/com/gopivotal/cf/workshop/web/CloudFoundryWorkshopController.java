@@ -1,10 +1,16 @@
 package com.gopivotal.cf.workshop.web;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
+import org.cloudfoundry.org.codehaus.jackson.JsonParseException;
+import org.cloudfoundry.org.codehaus.jackson.impl.JsonReadContext;
+import org.cloudfoundry.org.codehaus.jackson.map.JsonMappingException;
+import org.cloudfoundry.org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,9 +45,12 @@ public class CloudFoundryWorkshopController {
 	 * default action.
 	 * @param model The model for this action.
 	 * @return The path to the view.
+	 * @throws IOException 
+	 * @throws JsonMappingException 
+	 * @throws JsonParseException 
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String index(Model model) {
+	public String index(Model model) throws Exception {
 			
 		Date date = new Date();
 		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy h:mm a");
@@ -52,7 +61,11 @@ public class CloudFoundryWorkshopController {
 		model.addAttribute("port", port);
 
 		String vcapApplication = System.getenv("VCAP_APPLICATION");
-		model.addAttribute("vcapApplication", vcapApplication);
+		ObjectMapper mapper = new ObjectMapper();
+		if (vcapApplication != null) {
+			Map vcapMap = mapper.readValue(vcapApplication, Map.class);
+			model.addAttribute("vcapApplication", vcapMap);
+		}
 		
 		String vcapServices = System.getenv("VCAP_SERVICES");
 		model.addAttribute("vcapServices", vcapServices);

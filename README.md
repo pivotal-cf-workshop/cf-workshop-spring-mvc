@@ -13,8 +13,7 @@ CF:
  * Pivotal CF service variables
  * Scaling, router and load balancing
  * Health manager and application restart
- * RDBMS services and application configuration
- * Spring profiles for local and Pivotal CF services
+ * RDBMS services and application auto-configuration
 
 Building, Packaging, and Deploying
 --------------------------------
@@ -26,27 +25,13 @@ Building, Packaging, and Deploying
 
     mvn clean package
 
-###To run locally 
+###To run the application
 
+The application is set to use an embedded H2 database in non-PaaS environments,
+to take advantage of Pivotal CF's auto-configuration for services.  No
+additional configuration is necessary when running locally or in Pivotal CF.
 
-Set a environment variable for the Spring profile.  For example, set
-this as a startup argument in Tomcat.  The local profile will use an
-embedded H2 database:
-
-    spring.profiles.active=local
-
-###To run on Pivotal CF
-
-
-Pivotal CF automatically sets the Spring profile to 'cloud', so there is
-no need to set environment variables.
-
-A MySQL database service named 'cf-workshop-db' needs to be created and
-bound to the application.  Alternatively, update the manifest.yml file
-with the name of the MySQL service.  
-
-If a database service other than MySQL is used, add the JDBC driver to
-the POM file, and update the Hibernate configuration in
-`/src/main/webapp/WEB-INF/root-context.xml`.
-
+In Pivotal CF, it is assumed that a postgres service will be used.  If another
+service type, such as MySQL, is to be used, update the POM file and the manifest
+before pushing.
 
