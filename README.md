@@ -21,7 +21,7 @@ Building, Packaging, and Deploying
 ###To get the source code and build the WAR file
 
 
-    git clone https://github.com/bjimerson-pivotal/cf-workshop-spring-mvc
+    git clone https://github.com/pivotal-cf-workshop/cf-workshop-spring-mvc
 
     mvn clean package
 
