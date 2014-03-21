@@ -32,6 +32,6 @@ to take advantage of Pivotal CF's auto-configuration for services.  No
 additional configuration is necessary when running locally or in Pivotal CF.
 
 In Pivotal CF, it is assumed that a postgres service will be used.  If another
-service type, such as MySQL, is to be used, update the POM file and the manifest
+service type, such as MySQL Dev, is to be used, update the manifest
 before pushing.
 
