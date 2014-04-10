@@ -31,7 +31,5 @@ The application is set to use an embedded H2 database in non-PaaS environments,
 to take advantage of Pivotal CF's auto-configuration for services.  No
 additional configuration is necessary when running locally or in Pivotal CF.
 
-In Pivotal CF, it is assumed that a postgres service will be used.  If another
-service type, such as MySQL Dev, is to be used, update the manifest
-before pushing.
+In Pivotal CF, it is assumed that a MySQL Dev service will be used.
 
