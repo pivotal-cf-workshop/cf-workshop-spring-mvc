@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pivotal CF Workshop | Welcome</title>
+    <title> EXAMPLE application for PCF</title>
     <link rel="stylesheet" href="resources/css/foundation.css" />
     <script src="resources/js/modernizr.js"></script>
   </head>
@@ -15,7 +15,7 @@
     <nav class="top-bar" data-topbar>
       <ul class="title-area">
         <li class="name">
-          <h1><a href="./">Pivotal CF</a></h1>
+          <h1><a href="./">EXAMPLE application for PCF</a></h1>
         </li>
       </ul>
       <section class="top-bar-section">
@@ -28,7 +28,7 @@
 
     <div class="row">
       <div class="large-12 columns">
-        <h3>Welcome to Pivotal CF</h3>
+        <h3 style="color:#01786E">Demo Application Pivotal CF</h3>
         <hr/>
       </div>
     </div>
