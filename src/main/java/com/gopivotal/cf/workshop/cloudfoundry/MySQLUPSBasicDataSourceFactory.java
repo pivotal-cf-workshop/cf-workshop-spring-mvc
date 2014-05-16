@@ -6,11 +6,10 @@ import java.util.Map;
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp.BasicDataSource;
+import org.cloudfoundry.org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanInitializationException;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * basic bean factory that interrogates the environment to get VCAP_SERVICES and
@@ -29,13 +28,13 @@ public class MySQLUPSBasicDataSourceFactory {
 
 	private String upsName;
 
-	@SuppressWarnings({"unchecked","rawtypes"})
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void initalizeFromEnvironment() throws Exception {
 
 		ObjectMapper mapper = new ObjectMapper();
 
 		String vcapServices = System.getenv("VCAP_SERVICES");
-		
+
 		if (vcapServices != null) {
 			Map<String, List<Map>> svcMap = mapper.readValue(vcapServices,
 					Map.class);
