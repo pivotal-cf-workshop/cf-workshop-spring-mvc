@@ -43,18 +43,18 @@
 		</property>
 	</bean>
 
-	<beans profile="default">
+	<beans profile="cloud,default">
 		<bean id="dataSource" class="org.h2.jdbcx.JdbcDataSource">
 			<property name="URL" value="jdbc:h2:~/test" />
 		</bean>
 	</beans>
 
-	<beans profile="cloudFoundry">
+	<beans profile="mysql-ups">
 		
 		<bean id="MySQLUpsBasicDataSourceFactory"
 			class="com.gopivotal.cf.workshop.cloudfoundry.MySQLUPSBasicDataSourceFactory"
 			init-method="initalizeFromEnvironment">
-			<property name="upsName" value="ar-ups2" />
+			<property name="upsName" value="cfw-ups-mysql"/>
 		</bean>
 
 		<bean id="dataSource" factory-bean="MySQLUpsBasicDataSourceFactory" factory-method="getDataSource" />
