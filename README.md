@@ -1,4 +1,4 @@
-Pivotal CF Workshop - Spring MVC
+Pivotal CF Workshop - Spring MVC - MYSQL - UserProvided Service
 ================================
 
 Introduction
@@ -6,14 +6,16 @@ Introduction
 
 This is the Spring MVC sample application for the Pivotal CF Workshop.
 It is intended to demonstrate some of the basic functionality of Pivotal
-CF:
+CF (This spcific instance of the application has been modified to leverage a user provided service connection to a MYSQL instance):
 
  * Pivotal CF target, login, and push
  * Pivotal CF environment variables
  * Pivotal CF service variables
  * Scaling, router and load balancing
  * Health manager and application restart
- * RDBMS services and application auto-configuration
+ * RDBMS services via a UPS
+
+###NOTE - THE README DOCUMENTATION IS INCOMPLETE AT THIS TIME
 
 Building, Packaging, and Deploying
 --------------------------------
