@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.cloudfoundry.org.codehaus.jackson.JsonParseException;
-import org.cloudfoundry.org.codehaus.jackson.impl.JsonReadContext;
 import org.cloudfoundry.org.codehaus.jackson.map.JsonMappingException;
 import org.cloudfoundry.org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
@@ -63,6 +62,7 @@ public class CloudFoundryWorkshopController {
 		String vcapApplication = System.getenv("VCAP_APPLICATION");
 		ObjectMapper mapper = new ObjectMapper();
 		if (vcapApplication != null) {
+			@SuppressWarnings("rawtypes")
 			Map vcapMap = mapper.readValue(vcapApplication, Map.class);
 			model.addAttribute("vcapApplication", vcapMap);
 		}
@@ -108,7 +108,7 @@ public class CloudFoundryWorkshopController {
 	
 	/**
 	 * Action to initiate shutdown of the system.  In CF, the application 
-	 * <em>should</em>f restart.  In other environments, the application
+	 * <em>should</em> restart.  In other environments, the application
 	 * runtime will be shut down.
 	 */
 	@RequestMapping(value = "/kill", method = RequestMethod.GET)
