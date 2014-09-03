@@ -1,14 +1,11 @@
 package com.gopivotal.cf.workshop.web;
 
-import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import org.cloudfoundry.org.codehaus.jackson.JsonParseException;
-import org.cloudfoundry.org.codehaus.jackson.map.JsonMappingException;
 import org.cloudfoundry.org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,9 +41,7 @@ public class CloudFoundryWorkshopController {
 	 * default action.
 	 * @param model The model for this action.
 	 * @return The path to the view.
-	 * @throws IOException 
-	 * @throws JsonMappingException 
-	 * @throws JsonParseException 
+	 * @throws Exception 
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Model model) throws Exception {
