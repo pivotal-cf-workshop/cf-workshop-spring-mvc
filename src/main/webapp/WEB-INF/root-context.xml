@@ -28,9 +28,6 @@
 		<property name="URL" value="jdbc:h2:~/test"/>
 	</bean>
 	
-	<jdbc:initialize-database data-source="dataSource" ignore-failures="ALL">
-		<jdbc:script location="classpath:data/sampledata.sql"/>
-	</jdbc:initialize-database>
 	
 	<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 		<property name="showSql" value="true"/>
@@ -46,5 +43,15 @@
 			</map>
 		</property>
 	</bean>
+
+	<beans profile="cloud">
+	
+		<jdbc:initialize-database data-source="dataSource" ignore-failures="ALL">
+			<jdbc:script location="classpath:data/sampledata.sql"/>
+		</jdbc:initialize-database>
+		
+		<bean id="cloudFactory" class="org.springframework.cloud.CloudFactory" scope="singleton"/>
+		
+	</beans>
 	
 </beans>

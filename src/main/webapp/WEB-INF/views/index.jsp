@@ -42,7 +42,16 @@
           <p>The instance ID is <em>${vcapApplication['instance_id']}</em></p>
           <p>The instance index is <em>${vcapApplication['instance_index']}</em></p>
           <p>The instance was started at <em>${vcapApplication['started_at']}</em></p>
-          <p>The bound services are <em>${vcapServices}</em></p>
+          <c:if test="${ not empty serviceInfos}">
+          <p>The bound services are :<br/></p>
+          <p>
+          	<ul>
+          		<c:forEach items="${serviceInfos}" var="si">
+          			<li><em>${si}</em></li>
+          		</c:forEach>
+          	</ul>
+         </p>
+         </c:if>
 	    </div>
         <hr/>
       </div>
