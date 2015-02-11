@@ -46,16 +46,26 @@ public class CloudFoundryWorkshopController {
 	private CloudFactory cloudFactory;
 	
 
+
 	/**
-	 * Gets basic environment information. This is the application's default
-	 * action.
+	 * basic hello page, echos application details. APplications default page
+	 */
+	@RequestMapping(value="/")
+	public String hello(Model model){
+		model.addAttribute("instanceIndex", System.getenv("CF_INSTANCE_INDEX") != null?System.getenv("CF_INSTANCE_INDEX"):"no index environment variable");
+		return "index";
+	}
+	
+	
+	/**
+	 * Gets basic environment information. 
 	 * 
 	 * @param model
 	 *            The model for this action.
 	 * @return The path to the view.
 	 * @throws Exception
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/env", method = RequestMethod.GET)
 	public String index(Model model) throws Exception {
 
 		Date date = new Date();
@@ -111,7 +121,7 @@ public class CloudFoundryWorkshopController {
 			logger.info("no cloudFactory");
 		}
 
-		return "index";
+		return "env";
 	}
 
 	/**
