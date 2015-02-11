@@ -33,7 +33,7 @@ public class CloudJDBCDataSourceInitializer {
 		if (!dataSourceClass.equals("org.h2.jdbcx.JdbcDataSource")) {
 			ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator(
 					scriptClasspath);
-
+			databasePopulator.setContinueOnError(true);
 			databasePopulator.execute(dataSource);
 		}
 
