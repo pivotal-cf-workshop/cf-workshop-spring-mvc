@@ -163,5 +163,24 @@ public class CloudFoundryWorkshopController {
 		System.exit(-1);
 
 	}
+	
+	@RequestMapping(value="/addAttendee", method=RequestMethod.GET)
+	public String addAttendee(){
+		return "addAttendee";
+	}
+	
+	@RequestMapping(value="/addAttendee", method=RequestMethod.POST)
+	public String addAttendee(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("emailAddress") String emailAddress, Model model){
+		
+		Attendee attendee = new Attendee();
+		attendee.setFirstName(firstName);
+		attendee.setLastName(lastName);
+		attendee.setEmailAddress(emailAddress);
+		
+		attendeeRepository.save(attendee);
+		
+		return this.attendees(model);
+	}
+	
 
 }
