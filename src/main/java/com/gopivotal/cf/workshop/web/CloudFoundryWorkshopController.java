@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.Cloud;
 import org.springframework.cloud.CloudFactory;
 import org.springframework.cloud.service.ServiceInfo;
-import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,11 +50,38 @@ public class CloudFoundryWorkshopController {
 	 * basic hello page, echos application details. APplications default page
 	 */
 	@RequestMapping(value="/")
-	public String hello(Model model){
-		model.addAttribute("instanceIndex", System.getenv("CF_INSTANCE_INDEX") != null?System.getenv("CF_INSTANCE_INDEX"):"no index environment variable");
+	public String hello(Model model)throws Exception{
+		
+		for(String key:System.getenv().keySet()){
+			System.out.println(key+":"+System.getenv(key));
+		}
+		
+		
+		String instanceIndex = System.getenv("CF_INSTANCE_INDEX");
+		
+		if(instanceIndex == null){
+			logger.info("No CF_INSTANCE_INDEX, going to VCAP_APPLICATION");
+			if(getVCAPMap() != null)
+				instanceIndex = Integer.toString((Integer)getVCAPMap().get("instance_index")); 
+		}
+		
+		model.addAttribute("instanceIndex", instanceIndex != null?instanceIndex:"no index environment variable");
 		return "index";
 	}
 	
+	
+	@SuppressWarnings("rawtypes")
+	private Map getVCAPMap() throws Exception{
+		String vcapApplication = System.getenv("VCAP_APPLICATION");
+		ObjectMapper mapper = new ObjectMapper();
+		if (vcapApplication != null) {
+			Map vcapMap = mapper.readValue(vcapApplication, Map.class);
+			return vcapMap;
+		}
+		
+		return null;
+		
+	}
 	
 	/**
 	 * Gets basic environment information. 
@@ -76,11 +102,10 @@ public class CloudFoundryWorkshopController {
 		String port = System.getenv("PORT");
 		model.addAttribute("port", port);
 
-		String vcapApplication = System.getenv("VCAP_APPLICATION");
-		ObjectMapper mapper = new ObjectMapper();
-		if (vcapApplication != null) {
-			@SuppressWarnings("rawtypes")
-			Map vcapMap = mapper.readValue(vcapApplication, Map.class);
+		@SuppressWarnings("rawtypes")
+		Map vcapMap = getVCAPMap();
+		
+		if (vcapMap != null) {
 			model.addAttribute("vcapApplication", vcapMap);
 		}
 
