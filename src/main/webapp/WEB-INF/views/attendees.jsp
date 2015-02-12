@@ -63,7 +63,7 @@
 				<tbody>
 					<c:forEach items="${attendees}" var="attendee">
 						<tr>
-							<td><a href="sessions?attendeeId=${attendee.id}">${attendee.firstName}</a></td>
+							<td>${attendee.firstName}</td>
 							<td>${attendee.lastName}</td>
 							<td>${attendee.address}</td>
 							<td>${attendee.city}</td>

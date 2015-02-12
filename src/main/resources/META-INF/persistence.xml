@@ -7,7 +7,6 @@
 	<persistence-unit name="application" transaction-type="RESOURCE_LOCAL">
 
         <class>com.gopivotal.cf.workshop.entity.Attendee</class>
-        <class>com.gopivotal.cf.workshop.entity.Session</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 
 	</persistence-unit>

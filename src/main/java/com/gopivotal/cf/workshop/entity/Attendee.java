@@ -21,11 +21,6 @@ public class Attendee {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="SESSION_ID")
-	private Collection<Session> sessions = new LinkedHashSet<Session>();
-
-	
 	private String firstName;
 	private String lastName;
 	private String address;
@@ -47,18 +42,7 @@ public class Attendee {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	/**
-	 * @return the sessions
-	 */
-	public Collection<Session> getSessions() {
-		return sessions;
-	}
-	/**
-	 * @param sessions the sessions to set
-	 */
-	public void setSessions(Collection<Session> sessions) {
-		this.sessions = sessions;
-	}
+	
 	/**
 	 * @return the firstName
 	 */
