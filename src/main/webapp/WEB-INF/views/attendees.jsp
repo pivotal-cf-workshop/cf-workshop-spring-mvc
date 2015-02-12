@@ -27,6 +27,17 @@
 		</section>
 	</nav>
 
+    <div class="row">
+      <div class="large-12 columns">
+      	<div class="panel">
+          <p>The instance index is <b><em>${instanceIndex}</em></b></p>
+          
+	    </div>
+        <hr/>
+      </div>
+    </div>
+
+
 	<div class="row">
 		<div class="large-12 columns">
 			<h3>All Attendees</h3>

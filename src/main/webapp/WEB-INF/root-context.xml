@@ -47,15 +47,6 @@
 
 	<beans profile="cloud">
 	
-		<bean class="com.gopivotal.cf.workshop.config.CloudJDBCDataSourceInitializer" init-method="initialize">
-			<property name="dataSource" ref="dataSource"></property>
-			<property name="scriptClasspath">
-				<bean class="org.springframework.core.io.ClassPathResource">
-					<constructor-arg value="data/sampledata.sql"></constructor-arg>
-				</bean>	
-			</property>
-		</bean>
-		
 		<bean id="cloudFactory" class="org.springframework.cloud.CloudFactory" scope="singleton"/>
 		
 	</beans>

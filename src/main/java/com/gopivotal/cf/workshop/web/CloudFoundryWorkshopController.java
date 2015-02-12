@@ -56,7 +56,13 @@ public class CloudFoundryWorkshopController {
 			System.out.println(key+":"+System.getenv(key));
 		}
 		
+		addAppInstanceIndex(model);
 		
+		return "index";
+	}
+	
+	private void addAppInstanceIndex(Model model)throws Exception{
+
 		String instanceIndex = System.getenv("CF_INSTANCE_INDEX");
 		
 		if(instanceIndex == null){
@@ -66,7 +72,6 @@ public class CloudFoundryWorkshopController {
 		}
 		
 		model.addAttribute("instanceIndex", instanceIndex != null?instanceIndex:"no index environment variable");
-		return "index";
 	}
 	
 	
@@ -157,11 +162,12 @@ public class CloudFoundryWorkshopController {
 	 * @return The path to the view.
 	 */
 	@RequestMapping(value = "/attendees", method = RequestMethod.GET)
-	public String attendees(Model model) {
+	public String attendees(Model model) throws Exception{
 
 		Iterable<Attendee> attendees = attendeeRepository.findAll();
 
 		model.addAttribute("attendees", attendees);
+		addAppInstanceIndex(model);
 		return "attendees";
 	}
 
@@ -205,7 +211,7 @@ public class CloudFoundryWorkshopController {
 	}
 	
 	@RequestMapping(value="/addAttendee", method=RequestMethod.POST)
-	public String addAttendee(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("emailAddress") String emailAddress, Model model){
+	public String addAttendee(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("emailAddress") String emailAddress, Model model)throws Exception{
 		
 		Attendee attendee = new Attendee();
 		attendee.setFirstName(firstName);
