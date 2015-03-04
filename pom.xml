@@ -6,7 +6,7 @@
 	<artifactId>cf-workshop-spring-mvc</artifactId>
 	<name>Cloud Foundry Workshop Application - Spring MVC</name>
 	<packaging>war</packaging>
-	<version>0.1</version>
+	<version>0.2</version>
 	<repositories>
 		<repository>
 			<id>org.springframework.maven.milestone</id>
