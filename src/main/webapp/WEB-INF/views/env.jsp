@@ -22,7 +22,6 @@
         <ul class="right">
           <li><a href="./">Home</a></li>
           <li><a href="attendees">Attendees</a></li>
-          <li><a href="env">Show Environment</a></li>
         </ul>
       </section>
     </nav>
@@ -37,9 +36,22 @@
     <div class="row">
       <div class="large-12 columns">
       	<div class="panel">
-          <h4>Hello Pivotal CF</h4><br/>
-          <p>The instance index is <b><em>${instanceIndex}</em></b></p>
-          
+          <h4>Environment Information</h4><br/>
+          <p>The current server time is <em>${serverTime}</em></p>
+          <p>The application port is <em>${port}</em></p>
+          <p>The instance ID is <em>${vcapApplication['instance_id']}</em></p>
+          <p>The instance index is <em>${vcapApplication['instance_index']}</em></p>
+          <p>The instance was started at <em>${vcapApplication['started_at']}</em></p>
+          <c:if test="${ not empty serviceInfos}">
+          <p>The bound services are :<br/></p>
+          <p>
+          	<ul>
+          		<c:forEach items="${serviceInfos}" var="si">
+          			<li><em>${si}</em></li>
+          		</c:forEach>
+          	</ul>
+         </p>
+         </c:if>
 	    </div>
         <hr/>
       </div>

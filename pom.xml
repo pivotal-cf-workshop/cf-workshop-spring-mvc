@@ -6,7 +6,7 @@
 	<artifactId>cf-workshop-spring-mvc</artifactId>
 	<name>Cloud Foundry Workshop Application - Spring MVC</name>
 	<packaging>war</packaging>
-	<version>0.1</version>
+	<version>0.2</version>
 	<repositories>
 		<repository>
 			<id>org.springframework.maven.milestone</id>
@@ -21,7 +21,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>3.2.6.RELEASE</version>
+			<version>${spring.framework.version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>commons-logging</groupId>
@@ -32,7 +32,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>3.2.6.RELEASE</version>
+			<version>${spring.framework.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -52,7 +52,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
-			<version>3.2.6.RELEASE</version>
+			<version>${spring.framework.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.data</groupId>
@@ -160,14 +160,9 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>9.3-1100-jdbc41</version>
-		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.29</version>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-cloudfoundry-connector</artifactId>
+			<version>${spring.cloud.version}</version>
 		</dependency>
 	</dependencies>
     <build>
@@ -200,4 +195,8 @@
             </plugin>
         </plugins>
     </build>
+    <properties>
+    	<spring.framework.version>4.1.4.RELEASE</spring.framework.version>
+    	<spring.cloud.version>1.0.0.RELEASE</spring.cloud.version>
+    </properties>
 </project>
