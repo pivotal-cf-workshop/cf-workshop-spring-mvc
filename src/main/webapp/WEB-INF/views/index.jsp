@@ -23,6 +23,7 @@
           <li><a href="./">Home</a></li>
           <li><a href="attendees">Attendees</a></li>
           <li><a href="env">Show Environment</a></li>
+          <li><a href="checkApp">Version</a></li>
         </ul>
       </section>
     </nav>
