@@ -27,7 +27,7 @@
 	function startCheck(){
 		continueChecking = setInterval(function (){ 
 			d = new Date(); 
-			addVersion(d.toLocaleTimeString())}, 1000);
+			addVersion(d.toLocaleTimeString())}, 2000);
 	}
 	
 	function stopCheck(){
